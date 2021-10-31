@@ -175,12 +175,14 @@ function addTouchListeners() {
 
 function onDown(ev) {
   selectLine(ev);
-  document.body.style.cursor = 'grab';
+  var elCanvas = getElCanvas();
+  elCanvas.style.cursor = 'grab';
 }
 
 function onMove(ev) {
   if (gIsLineSelect) {
-    document.body.style.cursor = 'grabbing';
+    var elCanvas = getElCanvas();
+    elCanvas.style.cursor = 'grabbing';
     const { offsetX, offsetY } = ev;
     resetCanvas();
     changeLinePos(offsetX, offsetY);
@@ -191,5 +193,6 @@ function onMove(ev) {
 function onUp() {
   gIsLineSelect = false;
   resetCanvas();
-  document.body.style.cursor = 'crosshair';
+  var elCanvas = getElCanvas();
+  elCanvas.style.cursor = 'crosshair';
 }
